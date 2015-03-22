@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Predicting Horsepower of a Vehicle</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Predicting Horsepower of a Vehicle">
+  <meta name="author" content="">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>Predicting Horsepower of a Vehicle</h1>
+    <h2>Coursera - Developing Data Products</h2>
+    <p><br/></p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>Introduction</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>This shiny app feeds in information about a vehicle and outputs a predicted
+horse power (hp) value. This is based on a generalized linear model (glm) that
+has been trained using the mtcars data. This model will look at relationships
+between variables such as one plotted below, in order to suggest the correct hp.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Method</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>The GLM will be trained to look at the linear relationships between the
+independent and dependent variables and calculate the best prediction 
+for horsepower. An example of such a relationship is displayed below.</p>
+
+<p><img src="assets/fig/wt_mpg_plot-1.png" alt="plot of chunk wt_mpg_plot"> </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>Model Information</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Here is the information regarding the glm model used. As you can see there are next steps in terms of removing low regession variables but this is a starting point.</p>
+
+<pre><code class="r">model &lt;- glm(hp ~ mpg + cyl + disp + drat + wt + qsec + vs + am + gear + carb, data = mtcars)
+summary(model)$coefficients
+</code></pre>
+
+<pre><code>##                Estimate  Std. Error    t value    Pr(&gt;|t|)
+## (Intercept)  79.0483879 184.5040756  0.4284371 0.672695339
+## mpg          -2.0630545   2.0905650 -0.9868407 0.334955314
+## cyl           8.2037204  10.0861425  0.8133655 0.425134929
+## disp          0.4390024   0.1492007  2.9423609 0.007779725
+## drat         -4.6185488  16.0829171 -0.2871711 0.776795845
+## wt          -27.6600472  19.2703681 -1.4353668 0.165910518
+## qsec         -1.7843654   7.3639133 -0.2423121 0.810889101
+## vs           25.8128774  19.8512410  1.3003156 0.207583411
+## am            9.4862914  20.7599371  0.4569518 0.652397317
+## gear          7.2164047  14.6160152  0.4937327 0.626619355
+## carb         18.7486691   7.0287674  2.6674192 0.014412403
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>Shiny App</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Below is a screenshot of the shiny app hosted on shinapps.io</p>
+
+<p>Simply alter the values in the textboxes and the prediction will refresh automatically.</p>
+
+<p><img src="screenshot.PNG" alt="screenshot" width="800" height="400"></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='Introduction'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Method'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Model Information'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Shiny App'>
+         4
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
